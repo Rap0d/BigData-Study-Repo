@@ -1,0 +1,48 @@
+Data를 대상으로 apply()를 적용하여 행/열 방향으로 문제에 맞게 통계량을 구하시오.
+name <-c('김구', '유관순', '이순신')
+kor <- c(90, 85, 90)
+eng <- c(70, 85, 75)
+mat <- c(86, 92, 88)    
+
+문제01) 3개의 과목 점수를 이용하여 데이터프레임(Data)을 생성한다. 
+문제02) 행/열 방향으로 max() 함수를 적용하여 최댓값 구하기
+문제03) 행/열 방향으로 mean() 함수를 적용하여 평균 구하기(소숫점 2자리 표현)
+힌트 : round(data, 자릿수)
+문제04) 행 방향으로 분산과 표준 편차를 구해 보세요.
+
+name <-c('김구', '유관순', '이순신')
+kor <- c(90, 85, 90)
+eng <- c(70, 85, 75)
+mat <- c(86, 92, 88)   
+
+# 문제01
+students <- data.frame(name=name, kor=kor, eng=eng, mat=mat)
+
+mode(students)
+class(students)
+
+students
+
+# 문제02
+rownames(students) <- students[,c(1)]
+students
+
+students <- students[, c(2:4)] 
+students
+
+apply(students, 1, max)
+apply(students, 2, max)
+
+# 문제03
+mean_row <- round(apply(students, 1, mean), 2)
+mean_row
+
+mean_col <- round(apply(students, 2, mean), 2)
+mean_col
+
+# 문제04
+var_row <- round(apply(students, 1, var), 6)
+var_row
+
+sd_row <- round(apply(students, 1, sd), 6)
+sd_row

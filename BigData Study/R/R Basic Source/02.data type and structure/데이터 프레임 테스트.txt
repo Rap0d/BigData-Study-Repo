@@ -1,0 +1,42 @@
+다음과 같은 벡터를 칼럼으로 갖는 데이터프레임을 생성하시오.
+name <-c('김구', '유관순', '이순신', '김유신', '홍길동')
+age <-c(55, 45, 45, 53, 15) #연령
+gender <-c(1, 2, 1, 1, 1) #1:남자, 2: 여자
+job <-c('연예인', '주부', '군인', '직장인', '학생')
+sat <-c(3, 4, 2, 5, 5) # 만족도
+grade <- c('C', 'C', 'A', 'D', 'A')
+total <-c(44.4, 28.5, 43.5, NA, 27.1) #총구매금액(NA:결측치)  
+
+문제01) 위 7개의 벡터를 칼럼으로 갖는 members 데이터프레임 생성 
+문제02) gender 변수를 이용하여 막대 그래프 그리기 
+문제03) members에서 홀수 행만 선택해서 members2에 넣기
+
+name <-c('김구', '유관순', '이순신', '김유신', '홍길동')
+age <-c(55, 45, 45, 53, 15) #연령
+gender <-c(1, 2, 1, 1, 1) #1:남자, 2: 여자
+job <-c('연예인', '주부', '군인', '직장인', '학생')
+sat <-c(3, 4, 2, 5, 5) # 만족도
+grade <- c('C', 'C', 'A', 'D', 'A')
+total <-c(44.4, 28.5, 43.5, NA, 27.1) #총구매금액(NA:결측치)
+
+# 문제01
+members <- data.frame(name=name, age=age, 
+		gender=gender, job=job, sat=sat, 
+		grade=grade, total=total)
+
+mode(members)
+class(members)
+
+members
+
+# 문제02
+chartdata <- factor(members$gender, levels=c('1', '2'), labels=c('남자', '여자'))
+
+chartdata
+plot( chartdata )
+
+# 문제03
+filter01 <- seq(from=1, to=nrow(members), by=2)
+filter01
+members2 = members[filter01,]
+members2
